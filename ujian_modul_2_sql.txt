@@ -1,0 +1,21 @@
+-- No.1
+use world;
+select * from city
+where CountryCode ='IDN'
+order by Population desc limit 10;
+
+-- NO.2
+select ID, Name, District, Population from city
+order by Population desc limit 10;
+
+-- NO.3
+select c.Code, C.Name, cl.Language, cl.isOfficial, cl.Percentage from country c
+join countrylanguage cl on c.Code=cl.CountryCode
+where Language='English' and isOfficial = 'T'
+order by Percentage desc;
+
+-- NO.4
+select Name,Continent,LifeExpectancy,GNP from country
+where Continent ='Asia' and LifeExpectancy > (select avg(LifeExpectancy) from country)
+order by LifeExpectancy desc limit 10;
+
